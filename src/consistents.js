@@ -1,0 +1,1 @@
+export const BaseUrl = "https://assignment1-be-lyart.vercel.app/";

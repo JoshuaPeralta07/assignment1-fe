@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {BaseUrl} from "../consistents";
 
 function Register(props) {
 
@@ -8,32 +9,32 @@ function Register(props) {
     const [email, setEmail] = useState("");
     const [registerStatus, setRegisterStatus] = useState("")
 
-    function usernameHandler(e){
+    function usernameHandler(e) {
 
         setUsername(e.target.value)
     }
 
-    function emailHandler(e){
+    function emailHandler(e) {
 
         setEmail(e.target.value)
     }
 
-    function passwordHandler(e){
+    function passwordHandler(e) {
 
         setPassword(e.target.value)
     }
 
-    function Register(){
+    function register() {
         let data = JSON.stringify({
             "username": username,
-            "password": password,
-            "email": email
+            "email": email,
+            "password": password
         });
 
-        let config ={
+        let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: BaseUrl + 'users/register',
+            url: BaseUrl + 'programmes/register/',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -43,32 +44,30 @@ function Register(props) {
         axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                setRegisterStatus("Registration Successful!");
+                setRegisterStatus("Register Successful");
             })
             .catch((error) => {
                 console.log(error);
             });
 
-        }
+    }
 
     return (
         <div>
             <h1>Register User</h1>
-            <form onSubmit={Register}>
                 <div>
-                    <input type={"text"} placeholder={"Username"} name={"username"} value={username}
-                    onChange={usernameHandler} required/>
+                    <p>Username: <input type={"text"} id={"username"} onChange={usernameHandler} required/></p>
                 </div>
                 <div>
-                    <input type={"email"} placeholder={"Email"} name={"email"} value={email}
-                    onChange={emailHandler} required/>
+                    <p>Email: <input type={"email"} id={"email"} onChange={emailHandler} required/></p>
                 </div>
                 <div>
-                    <input type={"password"} placeholder={"Password"} value={password}
-                    name={"password"} onChange={passwordHandler} required/>
+                    <p>Password: <input type={"password"} id={"password"} onChange={passwordHandler} required/></p>
                 </div>
-                <button className={"btn btn-primary"} type={"submit"}>Register</button>
-            </form>
+            <p>
+                <button id={"register_btn"} onClick={register}>Register</button>
+            </p>
+            <p id={"registerStatus"}>{registerStatus}</p>
         </div>
     );
 }

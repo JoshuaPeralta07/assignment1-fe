@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import {BaseUrl} from "../consistents";
+import {useNavigate} from "react-router-dom";
 
 function Register(props) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    const [registerStatus, setRegisterStatus] = useState("")
+    // const [registerStatus, setRegisterStatus] = useState("")
+    const navigate = useNavigate();
+
+
 
     function usernameHandler(e) {
 
@@ -24,7 +28,7 @@ function Register(props) {
         setPassword(e.target.value)
     }
 
-    function register() {
+    async function register() {
         let data = JSON.stringify({
             "username": username,
             "email": email,
@@ -41,10 +45,10 @@ function Register(props) {
             data: data
         };
 
-        axios.request(config)
+        await axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                setRegisterStatus("Register Successful");
+                navigate('/');
             })
             .catch((error) => {
                 console.log(error);
@@ -54,7 +58,8 @@ function Register(props) {
 
     return (
         <div>
-            <h1>Register User</h1>
+            <form onSubmit={register}>
+                <h1>Register User</h1>
                 <div>
                     <p>Username: <input type={"text"} id={"username"} onChange={usernameHandler} required/></p>
                 </div>
@@ -64,10 +69,11 @@ function Register(props) {
                 <div>
                     <p>Password: <input type={"password"} id={"password"} onChange={passwordHandler} required/></p>
                 </div>
-            <p>
-                <button id={"register_btn"} onClick={register}>Register</button>
-            </p>
-            <p id={"registerStatus"}>{registerStatus}</p>
+                <p>
+                    <button id={"register_btn"} type={"submit"}>Register</button>
+                </p>
+            </form>
+            {/*<p id={"registerStatus"}>{registerStatus}</p>*/}
         </div>
     );
 }

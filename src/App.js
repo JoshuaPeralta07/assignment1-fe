@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Programmes from "./components/Programmes";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import StudentList from "./components/StudentList";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/programmes" element={<Programmes />}/>
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/studentlist" element={<StudentList/>}/>
         </Routes>
     </div>
   );

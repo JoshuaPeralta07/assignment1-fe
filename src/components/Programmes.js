@@ -1,24 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import {BaseUrl} from "../consistents";
 import axios from "axios";
-import {DataTable} from 'primereact/datatable';
-import {Column} from 'primereact/column';
+import DataTable from 'react-data-table-component';
 
 function Programmes(props) {
     const [programmes, setProgrammes] = useState([]);
     const columns = [
-        {field: 'name', header: 'Name'},
-        {field: 'description', header: 'Description'},
-        {field: 'level', header: 'Level'},
-        {field: 'duration', header: 'Duration'}
-    ];
+        {
+            name: "Name",
+            selector: (programmes) => programmes.name
+        },
+        {
+            name: "Description",
+            selector: (programmes) => programmes.description
+        },
+        {
+            name: "Level",
+            selector: (programmes) => programmes.level
+        },
+        {
+            name: "Duration",
+            selector: (programmes) => programmes.duration
+        },
+
+    ]
 
     useEffect(() => {
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
             url: BaseUrl + 'programmes/programme',
-            headers: {}
+            headers: {
+                'Authorization': 'token abf3d4b38df57e7ef0a95a6b748b5cfd5ea2df9a'
+            }
         };
 
         axios.request(config)
@@ -36,11 +50,8 @@ function Programmes(props) {
 
     return (
         <div className="card">
-            <DataTable value={programmes} tableStyle={{minWidth: '50rem'}}>
-                {columns.map((col, i) => (
-                    <Column key={col.field} field={col.field} header={col.header}/>
-                ))}
-            </DataTable>
+            <h1>Programme List</h1>
+             <DataTable columns={columns} data={programmes} fixedHeader={true}/>
         </div>
     );
 }

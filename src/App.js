@@ -6,6 +6,7 @@ import Programmes from "./components/Programmes";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import StudentList from "./components/StudentList";
+import AttendanceList from "./components/AttendanceList";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/register" element={<Register />}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/studentlist" element={<StudentList/>}/>
+            <Route path="/attendancelist" element={<AttendanceList/>}/>
         </Routes>
     </div>
   );

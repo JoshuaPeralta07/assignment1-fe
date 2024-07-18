@@ -3,29 +3,33 @@ import axios from "axios";
 import {BaseUrl} from "../consistents";
 import DataTable from "react-data-table-component";
 
-function StudentList(props) {
+function LecturerList(props) {
 
-    const [student, setStudent] = useState([]);
+    const [lecturers, setLecturers] = useState([]);
     const columns = [
         {
             name: "ID",
-            selector: (student) => student.id
+            selector: (lecturers) => lecturers.id
         },
         {
             name: "Name",
-            selector: (student) => student.name
+            selector: (lecturers) => lecturers.name
+        },
+        {
+            name: "Department",
+            selector: (lecturers) => lecturers.department
         },
         {
             name: "Email",
-            selector: (student) => student.email
+            selector: (lecturers) => lecturers.email
         },
         {
             name: "Phone",
-            selector: (student) => student.phone
+            selector: (lecturers) => lecturers.phone
         },
         {
             name: "Address",
-            selector: (student) => student.address
+            selector: (lecturers) => lecturers.address
         }
 
     ]
@@ -34,7 +38,7 @@ function StudentList(props) {
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: BaseUrl + 'programmes/student',
+            url: BaseUrl + 'programmes/lecturer',
             headers: {
                 'Authorization': 'token abf3d4b38df57e7ef0a95a6b748b5cfd5ea2df9a'
             }
@@ -42,20 +46,20 @@ function StudentList(props) {
 
         axios.request(config)
             .then((response) => {
-                setStudent(response.data);
+                setLecturers(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
 
+    }, []);
 
     return (
         <div>
-            <h1>Student List</h1>
-            <DataTable columns={columns} data={student} fixedHeader={true}/>
+            <h1>Lecturer List</h1>
+            <DataTable columns={columns} data={lecturers} fixedHeader={true}/>
         </div>
     );
 }
 
-export default StudentList;
+export default LecturerList;

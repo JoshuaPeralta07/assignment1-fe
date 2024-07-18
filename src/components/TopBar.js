@@ -9,7 +9,7 @@ function TopBar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+        <Navbar.Brand href="/">Assignment 1</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -23,6 +23,7 @@ function TopBar() {
             <NavDropdown title="Sections" id="navbarScrollingDropdown">
               <Nav.Link href="/programmes">Programmes</Nav.Link>
               <Nav.Link href="/studentlist">Students</Nav.Link>
+              <Nav.Link href="/lecturers">Lecturers</Nav.Link>
               <Nav.Link href="/attendancelist">Attendance</Nav.Link>
               <Nav.Link href="/studentmark">Student Marks</Nav.Link>
             </NavDropdown>

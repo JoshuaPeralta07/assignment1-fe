@@ -73,7 +73,6 @@ function Register(props) {
                     <button id={"register_btn"} type={"submit"}>Register</button>
                 </p>
             </form>
-            {/*<p id={"registerStatus"}>{registerStatus}</p>*/}
         </div>
     );
 }

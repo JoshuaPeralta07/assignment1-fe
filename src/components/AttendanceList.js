@@ -38,7 +38,6 @@ function AttendanceList(props) {
 
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
                 for(let i = 0; i < response.data.length; i++){
                     if(response.data[i].attendance === true){
                         response.data[i].attendance = "Present"

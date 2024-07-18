@@ -38,7 +38,6 @@ function StudentMarks(props) {
 
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
                 for(let i = 0; i < response.data.length; i++){
                     if(response.data[i].student_mark >= 50){
                         response.data[i].student_mark = "Pass"

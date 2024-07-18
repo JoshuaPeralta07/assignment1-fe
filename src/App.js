@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import StudentList from "./components/StudentList";
 import AttendanceList from "./components/AttendanceList";
 import StudentMarks from "./components/StudentMarks";
+import LecturerList from "./components/LecturerList";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/studentlist" element={<StudentList/>}/>
             <Route path="/attendancelist" element={<AttendanceList/>}/>
             <Route path="/studentmark" element={<StudentMarks/>}/>
+            <Route path="/lecturers" element={<LecturerList />}/>
         </Routes>
     </div>
   );

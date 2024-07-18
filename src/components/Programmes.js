@@ -37,7 +37,6 @@ function Programmes(props) {
 
         axios.request(config)
             .then((response) => {
-                console.log(JSON.stringify(response.data));
                 setProgrammes(response.data);
             })
             .catch((error) => {

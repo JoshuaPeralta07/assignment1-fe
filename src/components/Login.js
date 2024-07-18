@@ -1,20 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from "axios";
 import {BaseUrl} from "../consistents";
-import {useNavigate} from "react-router-dom";
+
+// import {useNavigate} from "react-router-dom";
 
 function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("");
-    const navigate = useNavigate();
+    const [login_status, setLogin_status] = useState("");
 
-    useEffect(() => {
-        setToken(localStorage.getItem("Token"));
-        if(token) {
-            alert("You are logged in.")
-        }
-    }, []);
+    // const navigate = useNavigate();
+
 
     function usernameHandler(e) {
         setUsername(e.target.value);
@@ -24,7 +20,7 @@ function Login(props) {
         setPassword(e.target.value);
     }
 
-    async function login() {
+    function login() {
         let data = JSON.stringify({
             "username": username,
             "password": password
@@ -33,18 +29,18 @@ function Login(props) {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: BaseUrl+'auth/',
+            url: BaseUrl + 'auth/',
             headers: {
                 'Content-Type': 'application/json'
             },
             data: data
         };
 
-        await axios.request(config)
+        axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                localStorage.setItem("Token", response.data.token);
-                navigate('/');
+                setLogin_status("Login Successfully");
+                // navigate('/');
             })
             .catch((error) => {
                 console.log(error);
@@ -60,6 +56,7 @@ function Login(props) {
             <p>
                 <button id={"loginbtn"} onClick={login}>Login</button>
             </p>
+            <p id={"login_status"}>{login_status}</p>
         </div>
     );
 }

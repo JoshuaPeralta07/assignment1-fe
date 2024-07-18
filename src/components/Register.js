@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import {BaseUrl} from "../consistents";
-import {useNavigate} from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 
 function Register(props) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
-    // const [registerStatus, setRegisterStatus] = useState("")
-    const navigate = useNavigate();
+    const [registerStatus, setRegisterStatus] = useState("")
+    // const navigate = useNavigate();
 
 
 
@@ -28,7 +28,7 @@ function Register(props) {
         setPassword(e.target.value)
     }
 
-    async function register() {
+    function register() {
         let data = JSON.stringify({
             "username": username,
             "email": email,
@@ -40,15 +40,17 @@ function Register(props) {
             maxBodyLength: Infinity,
             url: BaseUrl + 'programmes/register/',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'token abf3d4b38df57e7ef0a95a6b748b5cfd5ea2df9a'
             },
             data: data
         };
 
-        await axios.request(config)
+        axios.request(config)
             .then((response) => {
                 console.log(JSON.stringify(response.data));
-                navigate('/');
+                setRegisterStatus("Registered Successfully");
+                //navigate('/');
             })
             .catch((error) => {
                 console.log(error);
@@ -58,21 +60,20 @@ function Register(props) {
 
     return (
         <div>
-            <form onSubmit={register}>
-                <h1>Register User</h1>
-                <div>
-                    <p>Username: <input type={"text"} id={"username"} onChange={usernameHandler} required/></p>
-                </div>
-                <div>
-                    <p>Email: <input type={"email"} id={"email"} onChange={emailHandler} required/></p>
-                </div>
-                <div>
-                    <p>Password: <input type={"password"} id={"password"} onChange={passwordHandler} required/></p>
-                </div>
-                <p>
-                    <button id={"register_btn"} type={"submit"}>Register</button>
-                </p>
-            </form>
+            <h1>Register User</h1>
+            <div>
+                <p>Username: <input type={"text"} id={"username"} onChange={usernameHandler} required/></p>
+            </div>
+            <div>
+                <p>Email: <input type={"email"} id={"email"} onChange={emailHandler} required/></p>
+            </div>
+            <div>
+                <p>Password: <input type={"password"} id={"password"} onChange={passwordHandler} required/></p>
+            </div>
+            <p>
+                <button id={"register_btn"} onClick={register}>Register</button>
+            </p>
+            <p id={"register_status"}>{registerStatus}</p>
         </div>
     );
 }

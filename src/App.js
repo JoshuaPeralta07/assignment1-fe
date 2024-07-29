@@ -9,6 +9,7 @@ import StudentList from "./components/StudentList";
 import AttendanceList from "./components/AttendanceList";
 import StudentMarks from "./components/StudentMarks";
 import LecturerList from "./components/LecturerList";
+import About from "./components/About";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/attendancelist" element={<AttendanceList/>}/>
             <Route path="/studentmark" element={<StudentMarks/>}/>
             <Route path="/lecturers" element={<LecturerList />}/>
+            <Route path="/about" element={<About />}/>
         </Routes>
     </div>
   );

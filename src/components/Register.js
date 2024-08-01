@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router";
+import "../styles/Form.css"
 import axios from "axios";
 import {BaseUrl} from "../consistents";
 // import {useNavigate} from "react-router-dom";
 
 function Register(props) {
-
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
@@ -50,29 +52,43 @@ function Register(props) {
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 setRegisterStatus("Registered Successfully");
+                navigate("/login");
                 //navigate('/');
             })
             .catch((error) => {
                 console.log(error);
             });
 
+
+
     }
 
     return (
-        <div>
-            <h1>Register User</h1>
-            <div>
-                <p>Username: <input type={"text"} id={"username"} onChange={usernameHandler} required/></p>
-            </div>
-            <div>
-                <p>Email: <input type={"email"} id={"email"} onChange={emailHandler} required/></p>
-            </div>
-            <div>
-                <p>Password: <input type={"password"} id={"password"} onChange={passwordHandler} required/></p>
-            </div>
-            <p>
-                <button id={"register_btn"} onClick={register}>Register</button>
-            </p>
+        <div className="form-container">
+            <h1>Register</h1>
+            <input className="form-input"
+                   type={"text"}
+                   id={"username"}
+                   onChange={usernameHandler}
+                   placeholder="Username"
+                   required
+            />
+            <input className="form-input"
+                type={"email"}
+                id={"email"}
+                onChange={emailHandler}
+                placeholder="Email"
+                required
+            />
+            <input
+                className="form-input"
+                type={"password"}
+                id={"password"}
+                onChange={passwordHandler}
+                placeholder="Password"
+                required
+            />
+            <button className="form-button" id={"register_btn"} onClick={register}>Register</button>
             <p id={"register_status"}>{registerStatus}</p>
         </div>
     );

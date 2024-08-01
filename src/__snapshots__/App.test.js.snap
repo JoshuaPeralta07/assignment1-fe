@@ -17,6 +17,11 @@ exports[`renders about page correctly 1`] = `
   <p>
     Project: This is a group code review project.
   </p>
+  <button
+    onClick={[Function]}
+  >
+    Thank you, Go back to Home page!
+  </button>
 </div>
 `;
 

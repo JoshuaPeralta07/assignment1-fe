@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import "../styles/Form.css"
+import "../styles/Form.css";
 import {useNavigate} from "react-router";
 import axios from "axios";
 import {BaseUrl} from "../consistents";
@@ -12,8 +12,6 @@ function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [login_status, setLogin_status] = useState("");
-
-    // const navigate = useNavigate();
 
 
     function usernameHandler(e) {
@@ -45,7 +43,6 @@ function Login(props) {
                 console.log(JSON.stringify(response.data));
                 setLogin_status("Login Successful");
                 navigate("/");
-                // navigate('/');
             })
             .catch((error) => {
                 console.log(error);

@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router";
-import "../styles/Form.css"
+import "../styles/Form.css";
 import axios from "axios";
 import {BaseUrl} from "../consistents";
-// import {useNavigate} from "react-router-dom";
 
 function Register(props) {
     const navigate = useNavigate();
@@ -11,8 +10,6 @@ function Register(props) {
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [registerStatus, setRegisterStatus] = useState("")
-    // const navigate = useNavigate();
-
 
 
     function usernameHandler(e) {
@@ -53,7 +50,6 @@ function Register(props) {
                 console.log(JSON.stringify(response.data));
                 setRegisterStatus("Registered Successfully");
                 navigate("/login");
-                //navigate('/');
             })
             .catch((error) => {
                 console.log(error);

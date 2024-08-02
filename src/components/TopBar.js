@@ -27,6 +27,7 @@ function TopBar() {
               <Nav.Link href="/attendancelist">Attendance</Nav.Link>
               <Nav.Link href="/studentmark">Student Marks</Nav.Link>
             </NavDropdown>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

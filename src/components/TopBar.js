@@ -18,7 +18,7 @@ function TopBar() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/register">Registration</Nav.Link>
+            <Nav.Link href="/register">Register</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <NavDropdown title="Sections" id="navbarScrollingDropdown">
               <Nav.Link href="/programmes">Programmes</Nav.Link>
@@ -27,6 +27,7 @@ function TopBar() {
               <Nav.Link href="/attendancelist">Attendance</Nav.Link>
               <Nav.Link href="/studentmark">Student Marks</Nav.Link>
             </NavDropdown>
+            <Nav.Link href="/about">About</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

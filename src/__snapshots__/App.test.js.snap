@@ -28,4 +28,29 @@ exports[`renders Home and image correctly 2`] = `
   alt="dp"
   src="dp.jpg"
 />
+
+exports[`renders about page correctly 1`] = `
+<div>
+  <h1>
+    Assignment 1
+  </h1>
+  <h2>
+    About page
+  </h2>
+  <p>
+    Developers: Joshua Paul Peralta, Pavitharan Rajaratnam, & Jingzhou Zhang
+  </p>
+  <p>
+    Course: SOFT806 CICD
+  </p>
+  <p>
+    Project: This is a group code review project.
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Thank you, Go back to Home page!
+  </button>
+</div>
 `;
+

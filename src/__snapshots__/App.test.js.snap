@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`renders Home and image correctly 1`] = `
+<div>
+  <h1>
+    Welcome to MIS
+  </h1>
+  <img
+    alt="dp"
+    src="dp.jpg"
+    style={
+      Object {
+        "border": 5,
+        "borderColor": "black",
+        "borderStyle": "solid",
+        "display": "block",
+        "margin": "auto",
+        "paddingTop": 50,
+        "width": "50%",
+      }
+    }
+  />
+</div>
+`;
+
+exports[`renders Home and image correctly 2`] = `
+<img
+  alt="dp"
+  src="dp.jpg"
+/>
+
 exports[`renders about page correctly 1`] = `
 <div>
   <h1>
@@ -25,13 +54,3 @@ exports[`renders about page correctly 1`] = `
 </div>
 `;
 
-exports[`renders correctly 1`] = `
-<div>
-  <h1>
-    Assignment 1
-  </h1>
-  <h2>
-    Home page
-  </h2>
-</div>
-`;
